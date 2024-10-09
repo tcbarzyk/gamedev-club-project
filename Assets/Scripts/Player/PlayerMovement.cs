@@ -20,10 +20,12 @@ public class PlayerMovement : MonoBehaviour
     public float deceleration = 5f;
 
     private Camera mainCamera;
+    private GameObject playerRotationObject;
 
     private void Awake()
     {
         playerControls = new PlayerInputActions();
+        playerRotationObject = GameObject.Find("PlayerRotation");
         mainCamera = Camera.main;
     }
 
@@ -66,7 +68,7 @@ public class PlayerMovement : MonoBehaviour
 
         // Apply the velocity to the rigidbody
         rb.velocity = currentVelocity;
-        RotateTowardsMouse();
+        //RotateTowardsMouse();
     }
 
     void RotateTowardsMouse()
@@ -76,12 +78,14 @@ public class PlayerMovement : MonoBehaviour
         mousePosition.z = 0f; // Set z to 0 because we're in 2D
 
         // Calculate the direction from the player to the mouse
-        Vector2 direction = (mousePosition - transform.position).normalized;
+        Vector2 direction = (mousePosition - playerRotationObject.GetComponent<Transform>().position).normalized;
 
         // Calculate the angle in radians and convert to degrees
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
+        print("rotating to " + angle);
+
         // Apply the rotation to face the mouse
-        rb.rotation = angle;
+        playerRotationObject.GetComponent<Rigidbody2D>().rotation = angle;
     }
 }

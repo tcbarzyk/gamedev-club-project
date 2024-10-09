@@ -46,6 +46,10 @@ public class Bullet : MonoBehaviour
             // Destroy the bullet after hitting the player
             DestroyBullet();
         }
+        else if (other.CompareTag("Enemy"))
+        {
+            //do nothing
+        }
         else
         {
             DestroyBullet();
