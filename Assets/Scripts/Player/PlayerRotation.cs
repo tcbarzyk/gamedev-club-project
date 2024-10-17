@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+/*
+ * Controls player rotation towards mouse
+ */
+
 public class PlayerRotation : MonoBehaviour
 {
     private Camera mainCamera;
-    Rigidbody2D rb;
+    private Rigidbody2D rb;
 
     void Start()
     {
@@ -35,7 +39,7 @@ public class PlayerRotation : MonoBehaviour
         // Calculate the angle in radians and convert to degrees
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
-        print("rotating to " + angle);
+        //print("rotating to " + angle);
 
         // Apply the rotation to face the mouse
         transform.rotation = Quaternion.Euler(0, 0, angle);

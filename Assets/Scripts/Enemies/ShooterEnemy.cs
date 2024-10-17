@@ -4,24 +4,31 @@ using System.Collections.Generic;
 using Unity.VisualScripting.ReorderableList;
 using UnityEngine;
 
+/*
+ * Shooter enemy:
+ * Shoots bullets in direction defined by shoot point child objects
+ * Shoot points can be configured in any way
+ * 
+ */
+
 public class ShooterEnemy : MonoBehaviour
 {
-    [SerializeField]
-    private float shootCooldown = 1f;
-
+    [Header("Movement")]
     [SerializeField] float acceleration = 0f;
-    //[SerializeField] float movementCooldown = 0f;
     [SerializeField] float minMovement = 0f;
     [SerializeField] float maxMovement = 0f;
+
+    [Header("Shooting")]
+    [SerializeField] float shootCooldown = 1f;
+    public GameObject bullet;
+
+    private Rigidbody2D rb;
+    private Transform[] shootPoints;
 
     private float nextFireTime = 0f;
     private bool moving = false;
     Vector2 currentVelocity = Vector2.zero;
     Vector2 randomVector = Vector2.zero;
-
-    private Rigidbody2D rb;
-    public GameObject bullet;
-    private Transform[] shootPoints;
 
     // Start is called before the first frame update
     void Start()
@@ -51,7 +58,7 @@ public class ShooterEnemy : MonoBehaviour
         }
         if (Time.time > nextFireTime)
         {
-            Shoot();  // Shoot if cooldown has passed
+            shoot();  // Shoot if cooldown has passed
             nextFireTime = Time.time + shootCooldown;  // Reset the cooldown
             moving = false;
         }
@@ -78,7 +85,7 @@ public class ShooterEnemy : MonoBehaviour
         rb.velocity = currentVelocity;
     }
 
-    private void Shoot()
+    private void shoot()
     {
         foreach (Transform point in shootPoints)
         {

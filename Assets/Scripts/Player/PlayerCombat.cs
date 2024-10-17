@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerCombat : MonoBehaviour
 {
-    [SerializeField]
-    private int maxHealth;
+    [SerializeField] private int maxHealth;
+
     private int health;
 
     // Start is called before the first frame update
@@ -28,6 +29,6 @@ public class PlayerCombat : MonoBehaviour
     public void TakeHit(int damage)
     {
         health -= damage;
-        print("Player hit!");
+        print("Player hit for " + damage + ", health is now " + health);
     }
 }

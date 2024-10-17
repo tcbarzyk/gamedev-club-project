@@ -3,41 +3,38 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+/*
+ * Controls player movement and tilt
+ * 
+ * 
+ */
+
 public class PlayerMovement : MonoBehaviour
 {
-    PlayerInputActions playerControls;
-
-    Rigidbody2D rb;
-
-    Vector2 movement;
-    Vector2 currentVelocity = Vector2.zero;
-
-    private InputAction move;
-    private InputAction fire;
-
-    public float moveSpeed = 5f;
-    public float acceleration = 5f;
-    public float deceleration = 5f;
+    [Header("Movement")]
+    [SerializeField] float moveSpeed = 5f;
+    [SerializeField] float acceleration = 5f;
+    [SerializeField] float deceleration = 5f;
+    [SerializeField] float tiltAmount;
+    [SerializeField] float tiltSpeed;
 
     private Camera mainCamera;
     private GameObject playerRotationObject;
+    private PlayerControls playerControls;
+    private Rigidbody2D rb;
+
+    private InputAction move;
+
+    Vector2 movement;
+    Vector2 currentVelocity = Vector2.zero;
+    float currentTilt = 0f;
 
     private void Awake()
     {
-        playerControls = new PlayerInputActions();
+        playerControls = GetComponent<PlayerControls>();
         playerRotationObject = GameObject.Find("PlayerRotation");
         mainCamera = Camera.main;
-    }
-
-    private void OnEnable()
-    {
-        move = playerControls.Player.Move;
-        move.Enable();
-    }
-
-    private void OnDisable()
-    {
-        move.Disable();
+        move = playerControls.move;
     }
 
     // Start is called before the first frame update
@@ -68,24 +65,25 @@ public class PlayerMovement : MonoBehaviour
 
         // Apply the velocity to the rigidbody
         rb.velocity = currentVelocity;
-        //RotateTowardsMouse();
+        rotateCharacter();
     }
 
-    void RotateTowardsMouse()
+    void rotateCharacter()
     {
-        // Get the mouse position in screen coordinates and convert it to world space
-        Vector3 mousePosition = mainCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-        mousePosition.z = 0f; // Set z to 0 because we're in 2D
+        // Calculate the target tilt based on velocity
+        float targetTilt = 0f;
 
-        // Calculate the direction from the player to the mouse
-        Vector2 direction = (mousePosition - playerRotationObject.GetComponent<Transform>().position).normalized;
+        if (currentVelocity.magnitude > 0.1f)
+        {
+            // Calculate tilt based on movement direction
+            //float angle = Mathf.Atan2(currentVelocity.y, currentVelocity.x) * Mathf.Rad2Deg;
+            targetTilt = (currentVelocity.x / moveSpeed) * -tiltAmount;
+        }
 
-        // Calculate the angle in radians and convert to degrees
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        // Smoothly interpolate the current tilt towards the target tilt
+        currentTilt = Mathf.LerpAngle(currentTilt, targetTilt, tiltSpeed * Time.fixedDeltaTime);
 
-        print("rotating to " + angle);
-
-        // Apply the rotation to face the mouse
-        playerRotationObject.GetComponent<Rigidbody2D>().rotation = angle;
+        // Apply the current tilt to the character's rotation
+        transform.rotation = Quaternion.Euler(0, 0, currentTilt);
     }
 }

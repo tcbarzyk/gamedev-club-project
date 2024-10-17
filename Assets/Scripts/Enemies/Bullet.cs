@@ -3,11 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Bullet:
+ * Travels a distance before despawning
+ * Does not collide with enemies
+ * Need to do: collision effect
+ */
+
 public class Bullet : MonoBehaviour
 {
     public float bulletSpeed = 10.0f;
     public float timeToDestroy = 10.0f;
     public int damage = 1;
+    public bool isPlayerBullet = false;
 
     Rigidbody2D rb;
 
