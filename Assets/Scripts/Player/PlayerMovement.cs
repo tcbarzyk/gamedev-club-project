@@ -34,13 +34,13 @@ public class PlayerMovement : MonoBehaviour
         playerControls = GetComponent<PlayerControls>();
         playerRotationObject = GameObject.Find("PlayerRotation");
         mainCamera = Camera.main;
-        move = playerControls.move;
     }
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        move = playerControls.move;
     }
 
     // Update is called once per frame

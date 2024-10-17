@@ -53,6 +53,6 @@ public class EnemySpawner : MonoBehaviour
         float spawnDistance = Random.Range(minSpawnDistance, maxSpawnDistance);
         Vector2 spawnPosition = (Vector2)player.position + spawnDirection * spawnDistance;
 
-        Instantiate(enemyToSpawn, new Vector3(spawnPosition.x, spawnPosition.y, Random.value), Quaternion.identity);
+        Instantiate(enemyToSpawn, new Vector3(spawnPosition.x, spawnPosition.y, (Random.value+10)), Quaternion.identity);
     }
 }

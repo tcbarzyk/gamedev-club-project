@@ -48,15 +48,29 @@ public class Bullet : MonoBehaviour
         // Check if the object the bullet collided with is the player
         if (other.CompareTag("Player"))
         {
-            PlayerCombat player = other.GetComponent<PlayerCombat>();
-            player.TakeHit(damage);
+            if (isPlayerBullet)
+            {
+                //do nothing
+            }
+            else
+            {
+                PlayerCombat player = other.GetComponent<PlayerCombat>();
+                player.TakeHit(damage);
 
-            // Destroy the bullet after hitting the player
-            DestroyBullet();
+                // Destroy the bullet after hitting the player
+                DestroyBullet();
+            }
         }
         else if (other.CompareTag("Enemy"))
         {
-            //do nothing
+            if (isPlayerBullet)
+            {
+                //enemy takes hit
+            }
+            else
+            {
+                //do nothing
+            }
         }
         else
         {

@@ -22,5 +22,6 @@ public class PlayerControls : MonoBehaviour
         fire = inputMap.FindAction("Fire");
 
         fire.Enable();
+        move.Enable();
     }
 }

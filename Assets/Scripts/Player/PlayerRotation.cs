@@ -37,7 +37,7 @@ public class PlayerRotation : MonoBehaviour
         Vector2 direction = (mousePosition - transform.position).normalized;
 
         // Calculate the angle in radians and convert to degrees
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        float angle = (Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg) - 90;
 
         //print("rotating to " + angle);
 

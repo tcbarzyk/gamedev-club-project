@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,6 +8,7 @@ public class BacteriaShootAbility : MonoBehaviour
 {
     private Transform playerRotation;
     private PlayerCombat playerCombat;
+    public GameObject bullet;
 
     private void Awake()
     {
@@ -22,6 +24,8 @@ public class BacteriaShootAbility : MonoBehaviour
 
     private void OnFire()
     {
-        print("Player fire!!!");
+        Vector3 position = new Vector3(playerRotation.position.x , playerRotation.position.y, 1f);
+        GameObject bulletInstance = Instantiate(bullet, playerRotation.position, playerRotation.rotation);
+        //bulletInstance.GetComponent<Bullet>().isPlayerBullet = true;
     }
 }
