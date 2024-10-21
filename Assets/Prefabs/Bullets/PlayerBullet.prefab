@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 9191062940948302749}
   m_Layer: 0
   m_Name: PlayerBullet
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2404bdaec62246e4da0160a5b0dd896c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 8
+  bulletSpeed: 18
   timeToDestroy: 5
   damage: 1
   isPlayerBullet: 1

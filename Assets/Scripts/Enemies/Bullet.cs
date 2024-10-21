@@ -72,6 +72,10 @@ public class Bullet : MonoBehaviour
                 //do nothing
             }
         }
+        else if (other.CompareTag("Bullet"))
+        {
+            //do nothing
+        }
         else
         {
             DestroyBullet();
