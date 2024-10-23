@@ -54,18 +54,22 @@ public class Bullet : MonoBehaviour
             }
             else
             {
-                PlayerCombat player = other.GetComponent<PlayerCombat>();
-                player.TakeHit(damage);
-
-                // Destroy the bullet after hitting the player
-                DestroyBullet();
+                Entity player = other.GetComponent<Entity>();
+                if (!player.invincible)
+                {
+                    player.takeHit(damage);
+                    DestroyBullet();
+                }
             }
         }
         else if (other.CompareTag("Enemy"))
         {
             if (isPlayerBullet)
             {
-                //enemy takes hit
+                Entity enemy = other.GetComponent<Entity>();
+                enemy.takeHit(damage);
+
+                DestroyBullet();
             }
             else
             {

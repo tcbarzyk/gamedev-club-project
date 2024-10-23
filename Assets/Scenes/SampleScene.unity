@@ -428,7 +428,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3fbe75513504c154ab7d7600120052d8, type: 2}
+  - {fileID: 2100000, guid: ce3a51ca576f0ab4dbf7adfd7b275588, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -771,6 +771,7 @@ GameObject:
   - component: {fileID: 1955828906}
   - component: {fileID: 1955828907}
   - component: {fileID: 1955828908}
+  - component: {fileID: 1955828909}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -980,7 +981,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35e22259dce85b94299e232ce597f69f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
 --- !u!114 &1955828907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1026,6 +1026,26 @@ MonoBehaviour:
   bullet: {fileID: 5449674158698920800, guid: c0a57b768d6d1964db7139eac629d3fd, type: 3}
   shooting: 0
   shotCooldown: 0.4
+--- !u!114 &1955828909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1955828900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c987b92a5f9e3f642bb1a6f0fb763700, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 10
+  flashOnHit: 0
+  flashTime: 0.2
+  flashcolor: {r: 1, g: 1, b: 1, a: 1}
+  hasIFrames: 1
+  invincible: 0
+  numberOfFlashes: 4
+  invincibilityTime: 1
 --- !u!1 &1961607805
 GameObject:
   m_ObjectHideFlags: 0

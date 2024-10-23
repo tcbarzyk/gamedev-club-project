@@ -5,10 +5,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerCombat : MonoBehaviour
 {
-    [SerializeField] private int maxHealth;
-
-    private int health;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +13,7 @@ public class PlayerCombat : MonoBehaviour
 
     void Awake()
     {
-        health = maxHealth;
+        
     }
 
     // Update is called once per frame
@@ -26,9 +22,8 @@ public class PlayerCombat : MonoBehaviour
         
     }
 
-    public void TakeHit(int damage)
+    public void die()
     {
-        health -= damage;
-        print("Player hit for " + damage + ", health is now " + health);
+        print("Player died!");
     }
 }

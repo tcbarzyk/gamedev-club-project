@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8005380959107020815}
   - component: {fileID: 7610786425124099430}
   - component: {fileID: 4309602827156168710}
+  - component: {fileID: 6691161729336762477}
   m_Layer: 6
   m_Name: FollowEnemy
   m_TagString: Enemy
@@ -75,7 +76,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11d944cbe78f89a40b6bb4049019c554, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
   despawnTimer: 2
   despawnDistance: 60
 --- !u!70 &7610786425124099430
@@ -131,6 +131,26 @@ MonoBehaviour:
   tiltAmount: 12
   tiltSpeed: 10
   followRange: 25
+--- !u!114 &6691161729336762477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2662278692976091848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c987b92a5f9e3f642bb1a6f0fb763700, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 4
+  flashOnHit: 1
+  flashTime: 0.2
+  flashcolor: {r: 1, g: 1, b: 1, a: 1}
+  hasIFrames: 0
+  invincible: 0
+  numberOfFlashes: 5
+  invincibilityTime: 1.5
 --- !u!1 &4406266583369142011
 GameObject:
   m_ObjectHideFlags: 0
@@ -183,7 +203,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: ce3a51ca576f0ab4dbf7adfd7b275588, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

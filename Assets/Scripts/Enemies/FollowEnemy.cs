@@ -6,7 +6,6 @@ using UnityEngine.UIElements;
 /*
  * Follow enemy:
  * Follows the player
- * Need to do: stop following when not in range
  */
 
 
@@ -21,6 +20,7 @@ public class FollowEnemy : MonoBehaviour
 
     [Header("Behavior")]
     [SerializeField] float followRange;
+    [SerializeField] int contactDamage = 1;
 
     private Transform player;
     private Rigidbody2D rb;
@@ -75,5 +75,13 @@ public class FollowEnemy : MonoBehaviour
         currentTilt = Mathf.LerpAngle(currentTilt, targetTilt, tiltSpeed * Time.fixedDeltaTime);
 
         transform.rotation = Quaternion.Euler(0, 0, currentTilt);
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Player"))
+        {
+            collision.collider.GetComponent<Entity>().takeHit(contactDamage);
+        }
     }
 }

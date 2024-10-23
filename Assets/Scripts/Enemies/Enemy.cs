@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private int maxHealth;
     [SerializeField] private float despawnTimer = 5f;
     [SerializeField] private float despawnDistance = 80f;
 
     private Transform player;
 
-    private int health;
     private float timeToDespawn = 0f;
 
 
@@ -22,7 +20,7 @@ public class Enemy : MonoBehaviour
 
     void Awake()
     {
-        health = maxHealth;
+        
     }
 
     // Update is called once per frame
@@ -45,7 +43,12 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    void despawn()
+    private void despawn()
+    {
+        Destroy(gameObject);
+    }
+
+    public void die()
     {
         Destroy(gameObject);
     }

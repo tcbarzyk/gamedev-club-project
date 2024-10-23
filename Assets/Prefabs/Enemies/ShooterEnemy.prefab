@@ -265,6 +265,7 @@ GameObject:
   - component: {fileID: 5426081165313382461}
   - component: {fileID: 809132610665017748}
   - component: {fileID: 3148980538454812838}
+  - component: {fileID: -2437210439810944577}
   m_Layer: 6
   m_Name: ShooterEnemy
   m_TagString: Enemy
@@ -328,7 +329,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11d944cbe78f89a40b6bb4049019c554, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
   despawnTimer: 2
   despawnDistance: 60
 --- !u!114 &809132610665017748
@@ -383,6 +383,26 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.88
+--- !u!114 &-2437210439810944577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2724800235515510197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c987b92a5f9e3f642bb1a6f0fb763700, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 3
+  flashOnHit: 1
+  flashTime: 0.2
+  hasIFrames: 0
+  invincible: 0
+  numberOfFlashes: 5
+  invincibilityTime: 1.5
+  flashcolor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &3737888222472556578
 GameObject:
   m_ObjectHideFlags: 0
@@ -519,7 +539,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: ce3a51ca576f0ab4dbf7adfd7b275588, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -541,7 +561,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 323476524b02912459aa448ee52cd21c, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
